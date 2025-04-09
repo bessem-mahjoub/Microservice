@@ -1,0 +1,27 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Requests</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>message</th>
+            <th>Student</th>
+            <th>action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let request of req">
+            <td>{{ request.student ? request.student.name : 'n/a' }}</td>
+            <td>{{ request.message }}</td>
+            <td><button class="btn btn-primary">accept</button></td>
+            <td><button class="btn btn-danger">reject</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,91 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container-fluid {
+  padding: 0 15px; /* Adjust padding for better spacing */
+}
+
+.chat-container {
+  max-width: 100%; /* Ensure it doesn't overflow on smaller screens */
+  width: 100%;
+  height: 82vh;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0; /* Adjust margin for better spacing from top and bottom */
+}
+
+/* Chat Messages */
+.chat-messages {
+  flex-grow: 1; /* Allow chat messages to take available space */
+  overflow-y: auto;
+  padding: 20px; /* Increase padding for better readability */
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px; /* Increase margin for better separation */
+  padding: 10px;
+  border-radius: 12px; /* Slightly larger border-radius for a softer look */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+  max-width: 80%; /* Limit message width for better aesthetics */
+}
+
+.sent {
+  background-color: #007bff;
+  align-self: flex-end;
+  color: #fff; /* Ensure text color is white for readability */
+}
+
+.received {
+  background-color: #6c757d;
+  align-self: flex-start;
+  color: #fff;
+}
+
+/* Chat Input */
+.chat-input {
+  display: flex;
+  align-items: center;
+  padding: 12px; /* Slightly larger padding for better touch targets */
+  background: #44a3f7;
+}
+
+textarea {
+  flex: 1;
+  height: 50px; /* Set a fixed height */
+  border: 2px solid #007bff; /* Make border more prominent */
+  border-radius: 25px; /* More rounded borders */
+  padding: 10px;
+  margin-right: 10px;
+  resize: none; /* Disable resizing */
+  font-size: 16px; /* Larger font size for better readability */
+}
+
+button {
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px; /* More rounded borders */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Chat Name */
+.chatname {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+  font-size: 24px; /* Larger font size for emphasis */
+  font-weight: bold; /* Make the chat name bold */
+}

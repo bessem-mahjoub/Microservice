@@ -1,0 +1,27 @@
+/* monitoring-charts.component.css */
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 500px; /* Adjust maximum width as needed */
+  margin: 0 auto; /* Center the chart horizontally */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #fff;
+  height: 400px; /* Set a fixed height for the container */
+}
+
+.chart-title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+canvas {
+  max-width: 100%;
+  height: auto; /* Allow the canvas to resize based on its container */
+}

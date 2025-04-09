@@ -1,0 +1,91 @@
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <td colspan="7">
+          <div class="container">
+            <form [formGroup]="companyForm" (ngSubmit)="addCompany()">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" formControlName="name">
+                    <div *ngIf="companyForm.get('name')?.invalid && (companyForm.get('name')?.dirty || companyForm.get('name')?.touched)" class="text-danger">
+                      <div *ngIf="companyForm.get('name')?.errors?.['required']">Name is required.</div>
+                      <div *ngIf="companyForm.get('name')?.errors?.['minlength']"> Name should be at least 3 characters long.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" formControlName="address">
+                    <div *ngIf="companyForm.get('address')?.invalid && (companyForm.get('address')?.dirty || companyForm.get('address')?.touched)" class="text-danger">
+                      <div *ngIf="companyForm.get('address')?.errors?.['required']">Address is required.</div>
+                      <div *ngIf="companyForm.get('address')?.errors?.['minlength']">Address should be at least 3 characters long.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" formControlName="email">
+                    <div *ngIf="companyForm.get('email')?.invalid && (companyForm.get('email')?.dirty || companyForm.get('email')?.touched)" class="text-danger">
+                      <div *ngIf="companyForm.get('email')?.errors?.['required']">Email is required</div>
+                      <div *ngIf="companyForm.get('email')?.errors?.['pattern']">exemple@esprit.tn</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" class="form-control" id="description" formControlName="description">
+                    <div *ngIf="companyForm.get('description')?.invalid && (companyForm.get('description')?.dirty || companyForm.get('description')?.touched)" class="text-danger">
+                      <div *ngIf="companyForm.get('description')?.errors?.['required']">Description is required.</div>
+                      <div *ngIf="companyForm.get('description')?.errors?.['minlength']"> Description should be at least 3 characters long.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="pnumber">Phone Number</label>
+                    <input type="number" class="form-control" id="pnumber" formControlName="pnumber">
+                    <div *ngIf="companyForm.get('pnumber')?.invalid && (companyForm.get('pnumber')?.dirty || companyForm.get('pnumber')?.touched)" class="text-danger">
+                      <div *ngIf="companyForm.get('pnumber')?.errors?.['required']">Phone Number is required.</div>
+                      <div *ngIf="companyForm.get('pnumber')?.errors?.['minlength']"> Phone Number should be at least 8 Numbers long.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Remove the file input section -->
+              <!-- <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="file">Attach File</label>
+                    <input type="file" class="form-control-file" id="file" (change)="onFileSelected($event)" accept=".PNG .JPEG .JPG" required>
+                    <div *ngIf="companyForm.get('file')?.invalid && (companyForm.get('file')?.dirty || companyForm.get('file')?.touched)" class="invalid-feedback">
+                      <div *ngIf="companyForm.get('file')?.errors?.['required']">File attachment is required.</div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <div class="row">
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-primary btn-block" [disabled]="!companyForm.valid">Add Company</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

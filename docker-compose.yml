@@ -1,0 +1,264 @@
+services:
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: micro
+    volumes:
+      - mongodb_data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    networks:
+      - app-network
+    healthcheck:
+      test: [ "CMD", "mongosh", "--eval", "db.adminCommand('ping')" ]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    restart: unless-stopped
+
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_DATABASE: Complaints
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  eureka:
+    image: eureka
+    ports:
+      - "8761:8761"
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  tasks:
+    build:
+      context: .
+    image: tasks
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongo
+      - eureka
+    environment:
+      SPRING_APPLICATION_NAME: TASKS
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/test
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka:8761/eureka/
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
+      interval: 30s
+      retries: 3
+      timeout: 10s
+      start_period: 10s
+
+  company:
+    build:
+      context: .
+    image: companies
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mongo
+      - eureka
+    environment:
+      SPRING_APPLICATION_NAME: COMPANY
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/test
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka:8761/eureka/
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8088/actuator/health"]
+      interval: 30s
+      retries: 3
+      timeout: 10s
+      start_period: 10s
+
+  companies:
+    build:
+      context: .
+    image: companies
+    ports:
+      - "9090:9090"
+    depends_on:
+      - mongo
+      - eureka
+    environment:
+      SPRING_APPLICATION_NAME: companies
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/micro
+      SPRING_DATA_MONGODB_DATABASE: micro
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka:8761/eureka/
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8082/actuator/health" ]
+      interval: 30s
+      retries: 3
+      timeout: 10s
+      start_period: 10s
+
+  complaints:
+    build:
+      context: .
+    image: complaints
+    ports:
+      - "8083:8083"
+    depends_on:
+      - mysql
+      - eureka
+    environment:
+      SPRING_APPLICATION_NAME: Complaints
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/Complaints?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ""
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL8Dialect
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka:8761/eureka/
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8083/actuator/health"]
+      interval: 30s
+      retries: 3
+      timeout: 10s
+      start_period: 10s
+
+  document:
+    build:
+      context: .
+    image: document
+    ports:
+      - "8099:8099"
+    depends_on:
+      - mongo
+      - eureka
+    environment:
+      SPRING_APPLICATION_NAME: document
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/document
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka:8761/eureka/
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8084/actuator/health"]
+      interval: 30s
+      retries: 3
+      timeout: 10s
+      start_period: 10s
+
+  Internship:
+    build:
+      context: .
+    image: internship
+    ports:
+      - "8086:8086"
+    depends_on:
+      - mysql
+      - eureka
+    environment:
+      SPRING_APPLICATION_NAME: Internship
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/internship?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ""
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL8Dialect
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka:8761/eureka/
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8086/actuator/health" ]
+      interval: 30s
+      retries: 3
+      timeout: 10s
+      start_period: 10s
+
+  defence:
+    build:
+      context: .
+    image: defence
+    ports:
+      - "8087:8087"
+    depends_on:
+      - mysql
+      - eureka
+    environment:
+      SPRING_APPLICATION_NAME: defence
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/defence?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ""
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL8Dialect
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka:8761/eureka/
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8087/actuator/health" ]
+      interval: 30s
+      retries: 3
+      timeout: 10s
+      start_period: 10s
+
+  gateway:
+    build:
+      context: .
+    image: gateway
+    ports:
+      - "8224:8224"
+    depends_on:
+      - document
+      - eureka
+      - Internship
+      - defence
+      - companies
+      - complaints
+      - mongo
+      - mysql
+      - tasks
+
+    environment:
+      SPRING_APPLICATION_NAME: gateway-service
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka:8761/eureka/
+      SPRING_CLOUD_GATEWAY_DISCOVERY_LOCATOR_ENABLED: "true"
+      SPRING_CLOUD_GATEWAY_DISCOVERY_LOCATOR_LOWER_CASE_SERVICE_ID: "true"
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8224/actuator/health" ]
+      interval: 30s
+      retries: 3
+      timeout: 10s
+      start_period: 10s
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  mongodb_data:

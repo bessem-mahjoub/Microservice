@@ -1,0 +1,84 @@
+<div class="create-defense-container">
+  <h2>Create New Defense</h2>
+  <form (ngSubmit)="addDefense()" #defenseForm="ngForm">
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="dateDefence">Date of Defense</label>
+        <input
+          type="date"
+          id="dateDefence"
+          name="dateDefence"
+          [(ngModel)]="dateDefence"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="timeDefense">Time of Defense</label>
+        <input
+          type="text"
+          id="timeDefense"
+          name="timeDefense"
+          [(ngModel)]="timeDefense"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="numeroDeClasse">Class Number</label>
+        <input
+          type="text"
+          id="numeroDeClasse"
+          name="numeroDeClasse"
+          [(ngModel)]="numeroDeClasse"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="numeroDeBloc">Block</label>
+        <input
+          type="text"
+          id="numeroDeBloc"
+          name="numeroDeBloc"
+          [(ngModel)]="numeroDeBloc"
+          required>
+      </div>
+
+     
+
+      <div class="form-group">
+        <label for="nomDeJuret">Jury Member</label>
+        <input
+          type="text"
+          id="nomDeJuret"
+          name="nomDeJuret"
+          [(ngModel)]="nomDeJuret"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="nomDeEncadrent">Supervisor Name</label>
+        <input
+          type="text"
+          id="nomDeEncadrent"
+          name="nomDeEncadrent"
+          [(ngModel)]="nomDeEncadrent"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="remarque">Remarks</label>
+        <input
+          type="text"
+          id="remarque"
+          name="remarque"
+          [(ngModel)]="remarque">
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="!defenseForm.form.valid || isSubmitting">
+        Create Defense
+      </button>
+
+    </div>
+  </form>
+</div>

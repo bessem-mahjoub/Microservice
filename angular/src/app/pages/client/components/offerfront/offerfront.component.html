@@ -1,0 +1,31 @@
+<div class="grid-container">
+  <app-navbar></app-navbar>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Internship type</th>
+        <th>Start date</th>
+        <th>End date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let offer of offers; let i = index">
+        <td>{{ offers[i].typeInternship }}</td>
+        <td>{{ offers[i].dateStart | date:"MMM dd, yyyy 'at' hh:mm a" }}</td>
+        <td>{{ offers[i].dateEnd | date:"MMM dd, yyyy 'at' hh:mm a"  }}</td>
+        <td>
+          <div class="btn">
+            <!-- Pass the corresponding offerId and request to the notif method -->
+            <button type="button" class="btn btn-primary btn-block" (click)="req(offer.id , offer.typeInternship.toString())">Submit</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+<div class="footer" style="padding-top: 50px;">
+<app-footer></app-footer>
+</div>

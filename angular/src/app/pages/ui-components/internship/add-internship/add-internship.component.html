@@ -1,0 +1,140 @@
+<div class="container">
+    <!-- Bouton pour afficher/masquer le formulaire d'ajout -->
+    <button class="btn btn-primary mb-3" (click)="toggleFormVisibility()">Add Internship</button>
+  
+    <!-- Formulaire d'ajout d'internship -->
+    <div *ngIf="isFormVisible" class="card mb-3">
+        <div class="card-header">Add Internship</div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="company">Company</label>
+                <input class="form-control" type="text" id="company" [(ngModel)]="internship.idCompany" name="company" required>
+            </div>
+            <div class="form-group">
+                <label for="duration">Duration</label>
+                <select class="form-control" id="duration" [(ngModel)]="internship.duration" name="duration" required>
+                    <option value="1">1 mois</option>
+                    <option value="2">2 mois</option>
+                    <option value="3">3 mois</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input class="form-control" type="text" id="subject" [(ngModel)]="internship.subject" name="subject" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" [(ngModel)]="internship.description" name="description" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="degreeStageO">Degree Stage</label>
+                <select class="form-control" id="degreeStageO" [(ngModel)]="internship.degreeStageO" name="degreeStageO" required>
+                    <option value="1">1ère</option>
+                    <option value="2">2ème</option>
+                    <option value="3">3ème</option>
+                    <option value="4">4ème </option>
+                    <option value="4"> PFE</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="type">Type</label>
+                <select class="form-control" id="type" [(ngModel)]="internship.type" name="type" required>
+                    <option value="HUMAN_DEVELOPMENT">Human Development</option>
+                    <option value="INFORMATION_TECHNOLOGY">Information Technology</option>
+                    <option value="OPTIONAL">Optional</option>
+                    <option value="ENGINEERING">Engineering</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="addInternship()">Add Internship</button>
+        </div>
+    </div>
+  
+    <!-- Tableau des internships -->
+    <div *ngIf="internships.length > 0" class="mt-4">
+        <h4>Internships Added:</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ID Company</th>
+                    <th>Duration</th>
+                    <th>Subject</th>
+                    <th>Description</th>
+                    <th>Degree Stage O</th>
+                    <th>Type</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let internship of internships; let i = index">
+                    <td>{{ internship.id }}</td>
+                    <td>{{ internship.idCompany }}</td>
+                    <td>{{ internship.duration }}</td>
+                    <td>{{ internship.subject }}</td>
+                    <td>{{ internship.description }}</td>
+                    <td>{{ internship.degreeStageO }}</td>
+                    <td>{{ internship.type }}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger" (click)="deleteInternship(i)">Delete</button>
+                        <!-- Bouton de modification -->
+                        <button type="button" class="btn btn-primary" (click)="selectInternshipForModification(internship)">Modify</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Formulaire de modification -->
+    <div *ngIf="selectedInternship" class="card mb-3">
+        <div class="card-header">Modify Internship</div>
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <label for="company">Company</label>
+                    <input class="form-control" type="text" id="company" [(ngModel)]="selectedInternship.idCompany" name="company" required>
+                </div>
+                <div class="form-group">
+                    <label for="duration">Duration</label>
+                    <select class="form-control" id="duration" [(ngModel)]="internship.duration" name="duration" required>
+                        <option value="1">1 mois</option>
+                        <option value="2">2 mois</option>
+                        <option value="3">3 mois</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input class="form-control" type="text" id="subject" [(ngModel)]="selectedInternship.subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" [(ngModel)]="selectedInternship.description" name="description" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="degreeStageO">Degree Stage</label>
+                    <select class="form-control" id="degreeStageO" [(ngModel)]="internship.degreeStageO" name="degreeStageO" required>
+                        <option value="1">1ère</option>
+                        <option value="2">2ème</option>
+                        <option value="3">3ème</option>
+                        <option value="4">4ème </option>
+                        <option value="4"> PFE</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="type">Type</label>
+                    <select class="form-control" id="type" [(ngModel)]="selectedInternship.type" name="type" required>
+                        <option value="HUMAN_DEVELOPMENT">Human Development</option>
+                        <option value="INFORMATION_TECHNOLOGY">Information Technology</option>
+                        <option value="OPTIONAL">Optional</option>
+                        <option value="ENGINEERING">Engineering</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-primary" (click)="submitModification()" required>Submit Modification</button>
+                <button type="button" class="btn btn-secondary" (click)="cancelModification()" required>Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>

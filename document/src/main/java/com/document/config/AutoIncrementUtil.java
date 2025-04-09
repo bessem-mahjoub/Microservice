@@ -1,0 +1,27 @@
+package com.document.config;
+import com.document.entities.SequenceCounter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.stereotype.Component;
+
+@Component
+public class AutoIncrementUtil {
+
+    @Autowired
+    private MongoTemplate mongoTemplate;
+
+    public int getNextSequence(String sequenceName) {
+        Query query = new Query(Criteria.where("_id").is(sequenceName));
+        Update update = new Update().inc("seq", 1);
+        SequenceCounter counter = mongoTemplate.findAndModify(query, update, SequenceCounter.class);
+        if (counter == null) {
+            counter = new SequenceCounter(sequenceName, 1);
+            mongoTemplate.save(counter);
+            return 1;
+        }
+        return counter.getSeq();
+    }
+}

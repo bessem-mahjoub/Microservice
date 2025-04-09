@@ -1,0 +1,35 @@
+
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Turn in Management</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>submission Date</th>
+            <th>comment</th>
+            <th>File Name</th>
+            <th>student</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let turn of turns">
+            <td>{{ turn.submissionDate | date:'dd/MM/yyyy' }}</td>
+            <td>{{ turn.comment }}</td>
+            <td>{{ turn.attachmentFileName }}</td>
+            <td>{{ turn.student ? turn.student.name : 'n/a' }}</td>
+            <td>
+              <button class="btn btn-primary" (click)="downloadAttachment(turn.id, turn.attachmentFileName)">Download</button>
+            </td>
+            <td>
+              <button class="btn btn-success" (click)="openMonitoringDialog(turn.id)">Monitoring</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>

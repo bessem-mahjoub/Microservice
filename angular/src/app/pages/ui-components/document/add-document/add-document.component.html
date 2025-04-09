@@ -1,0 +1,105 @@
+<div class="container mt-5">
+    <form (submit)="addDocument()" enctype="multipart/form-data">
+  
+      <!-- Sélection du type de document -->
+      <div class="mb-3">
+        <label for="type" class="form-label">Type</label>
+        <select class="form-select" id="type" [(ngModel)]="documentType" name="type" required>
+          <option value="">Select Type</option>
+          <option value="ASSIGNMENT_LETTER">Assignment Letter</option>
+          <option value="REPORT">Report</option>
+          <option value="ATTESTATION">Attestation</option>
+          <option value="INTERNSHIP_JOURNAL">Internship Journal</option>
+        </select>
+      </div>
+  
+      <!-- Téléchargement du fichier -->
+      <div class="mb-3">
+        <label for="reportFile" class="form-label">Upload File (Word document only)</label>
+        <input type="file" class="form-control" id="reportFile" #fileInput multiple accept=".docx" (change)="onFilesSelected($event)">
+      </div>
+  
+      <!-- Bouton d'ajout de document -->
+      <button type="submit" class="btn btn-primary">Add Document</button>
+  
+    </form>
+  
+    <!-- Affichage des documents ajoutés -->
+    <div *ngIf="documents.length > 0" class="mt-4">
+      <h4>Documents Added:</h4>
+  
+      <!-- Filtrage des documents par type -->
+      <div class="mb-3">
+        <label for="filterType" class="form-label">Filter by Type:</label>
+        <select class="form-select" id="filterType" [(ngModel)]="filterType" name="filterType">
+          <option value="">All Types</option>
+          <option value="ASSIGNMENT_LETTER">Assignment Letter</option>
+          <option value="REPORT">Report</option>
+          <option value="ATTESTATION">Attestation</option>
+          <option value="INTERNSHIP_JOURNAL">Internship Journal</option>
+        </select>
+      </div>
+  
+      <!-- Tableau des documents -->
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Type</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let document of filteredDocuments(); let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ document.type }}</td>
+              <div *ngFor="let user of users">
+                <p>{{ user.name }}</p>
+              </div>
+          
+            <td> <!-- Last Name -->
+              <div *ngFor="let user of users">
+                <p>{{ user.lastName }}</p>
+              </div>
+            </td>
+            <td> <!-- Identified -->
+              <!-- Affichage de l'identifiant -->
+              <div *ngFor="let user of users">
+                <p>{{ user.identified }}</p>
+              </div>
+            </td>
+              <td>
+                <!-- Boutons pour gérer le document -->
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-danger" (click)="deleteDocument(document)">Delete</button>
+                  <button type="button" class="btn btn-primary" (click)="openUpdateForm(document)">Modify</button>
+                  <button type="button" class="btn btn-primary" (click)="downloadDocument(document.idDoc, document.type)">Download</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <!-- Boutons pour vérifier le plagiat -->
+      <div class="plagiarism-button-container mt-4">
+        <button type="button" class="btn btn-primary me-2" (click)="checkPlagiarism()" [disabled]="selectedFiles.length < 2">Check Plagiarism</button>
+        <button type="button" class="btn btn-primary" (click)="openPlagiarismResults()">View Plagiarism Results</button>
+      </div>
+    </div>
+  
+    <!-- Signature Pad -->
+    <div class="mt-5">
+      <canvas #signaturePad id="signaturePad" width="500" height="300"></canvas>
+      <div class="mt-3">
+        <button (click)="saveSignature()" class="btn btn-primary">Save Signature</button>
+        <button (click)="onClearSignature()" class="btn btn-secondary ms-2">Clear Signature Pad</button>
+      </div>
+      <div class="mt-3">
+        <button class="btn btn-success">Download Template</button>
+      </div>
+    </div>
+  
+  </div>
+  

@@ -1,0 +1,54 @@
+.task-form-container {
+  max-width: 400px;
+  margin: 0 auto;
+
+  .form-group {
+    margin-bottom: 1.5rem;
+
+    label {
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="file"] {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      font-size: 1rem;
+    }
+
+    input[type="file"] {
+      padding: 0.5rem 0;
+      border: none;
+      outline: none;
+    }
+
+    .invalid-feedback {
+      display: block;
+      color: #dc3545;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+
+    &:disabled {
+      background-color: #6c757d;
+      cursor: not-allowed;
+    }
+  }
+}

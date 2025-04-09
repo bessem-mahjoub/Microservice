@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/complaints" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Tasks/pom.xml" />
+        <option value="$PROJECT_DIR$/tasks/pom.xml" />
+        <option value="$PROJECT_DIR$/Eureka/pom.xml" />
+        <option value="$PROJECT_DIR$/Getaway/pom.xml" />
+        <option value="$PROJECT_DIR$/Complaints/pom.xml" />
+        <option value="$PROJECT_DIR$/companies/pom.xml" />
+        <option value="$PROJECT_DIR$/complaints/pom.xml" />
+        <option value="$PROJECT_DIR$/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/document/pom.xml" />
+        <option value="$PROJECT_DIR$/Internship/pom.xml" />
+        <option value="$PROJECT_DIR$/defence/pom.xml" />
+        <option value="$PROJECT_DIR$/Company/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Getaway" />
+        <module name="companies" />
+        <module name="Company" />
+        <module name="defence" />
+        <module name="document" />
+        <module name="complaints" />
+        <module name="Eureka" />
+        <module name="Internship" />
+        <module name="tasks" />
+        <module name="gateway" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="PIPROJECT" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Company" options="-parameters" />
+      <module name="Complaints" options="-parameters" />
+      <module name="Eureka" options="-parameters" />
+      <module name="Getaway" options="-parameters" />
+      <module name="Internship" options="-parameters" />
+      <module name="PIPROJECT" options="-parameters" />
+      <module name="companies" options="-parameters" />
+      <module name="complaints" options="-parameters" />
+      <module name="defence" options="-parameters" />
+      <module name="document" options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="tasks" options="-parameters" />
+    </option>
+  </component>
+</project>

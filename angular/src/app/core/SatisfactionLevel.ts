@@ -1,0 +1,8 @@
+
+export  enum SatisfactionLevel{
+
+    VERY_SATISFIED='VERY_SATISFIED',
+    SATISFIED='SATISFIED',
+    NEUTRAL='NEUTRAL',
+    NOT_SATISFIED='NOT_SATISFIED'
+}

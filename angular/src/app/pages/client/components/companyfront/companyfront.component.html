@@ -1,0 +1,17 @@
+<div class="grid-container">
+  <div class="grid-item" *ngFor="let company of companies">
+    <div class="company-card">
+      <img *ngIf="company.attachmentData" [src]="getImageUrl(company.attachmentData)" alt="Company Image" style="width: 100%;"/>
+        <div class="content">
+        <h3 style="text-align: center;">{{ company.name }}</h3>
+        <p><strong>Address:</strong> {{ company.address }}</p>
+        <p><strong>Email:</strong> {{ company.email }}</p>
+        <p><strong>Description:</strong> {{ company.description }}</p>
+        <p><strong>Phone Number:</strong> {{ company.pnumber }}</p>
+        <div class="btn">
+          <button type="button" class="btn btn-primary btn-block" (click)="show_offers(company.id)">View offers</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

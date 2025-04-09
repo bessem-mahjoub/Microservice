@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteTargetsManager">
+    <targets>
+      <target name="&lt;none&gt;:&lt;none&gt;" type="docker" uuid="a9693c4f-ff5d-47ce-8178-9f4233e05341">
+        <config>
+          <option name="targetPlatform">
+            <TargetPlatform />
+          </option>
+          <option name="buildImageConfig">
+            <BuildImageConfig>
+              <option name="builtImageTag" value="&lt;none&gt;:&lt;none&gt;" />
+              <option name="dockerFile" value="Eureka/Dockerfile" />
+            </BuildImageConfig>
+          </option>
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="agentFolder">
+              <VolumeState>
+                <option name="targetSpecificBits">
+                  <map>
+                    <entry key="mountAsVolume" value="false" />
+                  </map>
+                </option>
+              </VolumeState>
+            </option>
+            <option name="classpathFolder">
+              <VolumeState>
+                <option name="targetSpecificBits">
+                  <map>
+                    <entry key="mountAsVolume" value="false" />
+                  </map>
+                </option>
+              </VolumeState>
+            </option>
+            <option name="homePath" value="/usr/java/openjdk-17" />
+            <option name="javaVersionString" value="17.0.2" />
+          </config>
+        </ContributedStateBase>
+      </target>
+      <target name="&lt;none&gt;:&lt;none&gt;2" type="docker" uuid="52980a1e-e8da-4f33-b30b-b9474dbc318c">
+        <config>
+          <option name="targetPlatform">
+            <TargetPlatform />
+          </option>
+          <option name="buildImageConfig">
+            <BuildImageConfig>
+              <option name="builtImageTag" value="&lt;none&gt;:&lt;none&gt;" />
+              <option name="dockerFile" value="Eureka/Dockerfile" />
+            </BuildImageConfig>
+          </option>
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="agentFolder">
+              <VolumeState>
+                <option name="targetSpecificBits">
+                  <map>
+                    <entry key="mountAsVolume" value="false" />
+                  </map>
+                </option>
+              </VolumeState>
+            </option>
+            <option name="classpathFolder">
+              <VolumeState>
+                <option name="targetSpecificBits">
+                  <map>
+                    <entry key="mountAsVolume" value="false" />
+                  </map>
+                </option>
+              </VolumeState>
+            </option>
+            <option name="homePath" value="/usr/java/openjdk-17" />
+            <option name="javaVersionString" value="17.0.2" />
+          </config>
+        </ContributedStateBase>
+      </target>
+      <target name="&lt;none&gt;:&lt;none&gt;3" type="docker" uuid="5382c584-f914-4b12-ba1e-426fed1f44e8">
+        <config>
+          <option name="targetPlatform">
+            <TargetPlatform />
+          </option>
+          <option name="buildImageConfig">
+            <BuildImageConfig>
+              <option name="builtImageTag" value="&lt;none&gt;:&lt;none&gt;" />
+              <option name="dockerFile" value="Eureka/Dockerfile" />
+            </BuildImageConfig>
+          </option>
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="agentFolder">
+              <VolumeState>
+                <option name="targetSpecificBits">
+                  <map>
+                    <entry key="mountAsVolume" value="false" />
+                  </map>
+                </option>
+              </VolumeState>
+            </option>
+            <option name="classpathFolder">
+              <VolumeState>
+                <option name="targetSpecificBits">
+                  <map>
+                    <entry key="mountAsVolume" value="false" />
+                  </map>
+                </option>
+              </VolumeState>
+            </option>
+            <option name="homePath" value="/usr/java/openjdk-17" />
+            <option name="javaVersionString" value="17.0.2" />
+          </config>
+        </ContributedStateBase>
+      </target>
+      <target type="docker" uuid="2bdbcf40-dac9-43d6-b150-86c99f3a5923">
+        <config>
+          <option name="targetPlatform">
+            <TargetPlatform />
+          </option>
+          <option name="buildImageConfig">
+            <BuildImageConfig>
+              <option name="dockerFile" value="companies/Dockerfile" />
+            </BuildImageConfig>
+          </option>
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="agentFolder">
+              <VolumeState>
+                <option name="targetSpecificBits">
+                  <map>
+                    <entry key="mountAsVolume" value="false" />
+                  </map>
+                </option>
+              </VolumeState>
+            </option>
+            <option name="classpathFolder">
+              <VolumeState>
+                <option name="targetSpecificBits">
+                  <map>
+                    <entry key="mountAsVolume" value="false" />
+                  </map>
+                </option>
+              </VolumeState>
+            </option>
+          </config>
+        </ContributedStateBase>
+      </target>
+    </targets>
+  </component>
+</project>

@@ -1,0 +1,14 @@
+<div class="form-group">
+    <h2>Update Document</h2>
+    <div>
+      <label for="updatedType">Updated Type:</label>
+      <select class="form-control" id="updatedType" [(ngModel)]="updatedDocumentType" name="updatedType" required>
+        <option value="ASSIGNMENT_LETTER">Assignment Letter</option>
+        <option value="REPORT">Report</option>
+        <option value="ATTESTATION">Attestation</option>
+        <option value="INTERNSHIP_JOURNAL">Internship Journal</option>
+      </select>
+      <button class="btn btn-primary" (click)="saveChanges()">Save Changes</button>
+    </div>
+  </div>
+  

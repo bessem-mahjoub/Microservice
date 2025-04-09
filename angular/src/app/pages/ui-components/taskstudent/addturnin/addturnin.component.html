@@ -1,0 +1,20 @@
+<h1 class="mb-4">Add Turn-In</h1>
+
+<form [formGroup]="turnInForm" (ngSubmit)="addTurnIn()" class="needs-validation" novalidate>
+  <div class="form-group">
+    <label for="comment">Comment:</label>
+    <textarea id="comment" class="form-control" formControlName="comment" rows="4" placeholder="Enter your comment here..."></textarea>
+    <div *ngIf="turnInForm.get('comment')?.invalid && (turnInForm.get('comment')?.dirty || turnInForm.get('comment')?.touched)"
+         class="invalid-feedback d-block">
+      <div *ngIf="turnInForm.get('comment')?.errors?.required">Comment is required.</div>
+      <div *ngIf="turnInForm.get('comment')?.errors?.minlength">Comment must be at least 3 characters long.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="attachment">Attachment:</label>
+    <input id="attachment" type="file" (change)="onFileSelected($event)" class="form-control-file">
+  </div>
+
+  <button type="submit" class="btn btn-primary mt-3" [disabled]="turnInForm.invalid">Submit</button>
+</form>

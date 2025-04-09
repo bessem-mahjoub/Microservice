@@ -1,0 +1,34 @@
+<div class="table-responsive">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <td colspan="7">
+            <div class="container">
+<form [formGroup]="offerForm" (ngSubmit)="addOffer()">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="internship">Internship</label>
+                <select formControlName="typeInternship" class="form-control">
+                    <option selected disabled>Select Internship</option>
+                    <option *ngFor="let intern of internshipOptions">{{intern}}</option>
+                </select>
+                <div *ngIf="offerForm.get('typeInternship')?.invalid && (offerForm.get('typeInternship')?.dirty || offerForm.get('typeInternship')?.touched)"
+                    class="text-danger">
+                    <div *ngIf="offerForm.get('typeInternship')?.errors?.['required']">Internship is required.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="!offerForm.valid">Add Offer</button>
+        </div>
+    </div>
+</form>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>

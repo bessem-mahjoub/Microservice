@@ -1,0 +1,51 @@
+/* Style pour le conteneur principal */
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour les boutons */
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Style pour le spinner de chargement */
+.loading-spinner {
+  margin-top: 20px;
+}
+
+/* Style pour le conteneur de résultats */
+.result-container {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Style pour le titre des résultats */
+.result-heading {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Style pour le message de résultat sans plagiat */
+.result-message.no-plagiarism {
+  color: green;
+  font-weight: bold;
+}
+
+/* Style pour le message de résultat avec plagiat */
+.result-message.with-plagiarism {
+  color: red;
+  font-weight: bold;
+}

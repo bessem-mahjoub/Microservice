@@ -1,0 +1,50 @@
+.background {
+  background: linear-gradient(to right, #1a2533, #00c6ff);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: rgb(232, 226, 226);
+  font-family: Arial, sans-serif;
+}
+
+.About {
+  padding: 20px;
+  text-align: center;
+}
+
+.officeGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* centre les cartes horizontalement */
+}
+
+.officeCard {
+  background: #333131;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(199, 93, 93, 0.3);
+  padding: 20px;
+  margin-bottom: 20px;
+  width: calc(45% - 10px); /* réduisez la largeur et ajoutez une marge */
+  box-sizing: border-box;
+  transition: all 0.3s ease; /* pour l'animation */
+  margin-top: 20px; /* marge pour donner de l'espace entre les cartes */
+}
+
+.officeCard:hover {
+  transform: scale(1.05); /* l'animation de "hover" */
+  cursor: pointer;
+}
+
+.officeCard h2 {
+  text-transform: uppercase;
+  color: #8f69fe;
+}
+
+.officeCard a {
+  color: #67c467;
+  text-decoration: none;
+}
+
+.officeCard a:hover {
+  text-decoration: underline;
+}

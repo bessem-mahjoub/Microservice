@@ -1,0 +1,91 @@
+<div class="update-defense-container">
+  <h2>Update Defense</h2>
+  <form (ngSubmit)="updateDefense()">
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="dateDefence">Date of Defense</label>
+        <input
+          type="date"
+          id="dateDefence"
+          [(ngModel)]="dateDefence"
+          name="dateDefence"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="timeDefense">Time of Defense</label>
+        <input
+          type="text"
+          id="timeDefense"
+          [(ngModel)]="timeDefense"
+          name="timeDefense"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="numeroDeClasse">Class Number</label>
+        <input
+          type="text"
+          id="numeroDeClasse"
+          [(ngModel)]="numeroDeClasse"
+          name="numeroDeClasse"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="numeroDeBloc">Block</label>
+        <input
+          type="text"
+          id="numeroDeBloc"
+          [(ngModel)]="numeroDeBloc"
+          name="numeroDeBloc"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="userStudent">Student</label>
+        <input
+          type="text"
+          id="userStudent"
+          [(ngModel)]="userStudent"
+          name="userStudent"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="nomDeJuret">Jury Member</label>
+        <input
+          type="text"
+          id="nomDeJuret"
+          [(ngModel)]="nomDeJuret"
+          name="nomDeJuret"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="nomDeEncadrent">Supervisor Name</label>
+        <input
+          type="text"
+          id="nomDeEncadrent"
+          [(ngModel)]="nomDeEncadrent"
+          name="nomDeEncadrent"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="remarque">Remarks</label>
+        <input
+          type="text"
+          id="remarque"
+          [(ngModel)]="remarque"
+          name="remarque">
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="isSubmitting">
+        Update Defense
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,38 @@
+<h1>Add Monitoring</h1>
+
+<form [formGroup]="monitoringForm" (ngSubmit)="submitMonitoringNote()" style="width: 500px;">
+  <div class="form-group">
+    <label for="comment">Comment:</label>
+    <textarea id="comment" class="form-control" formControlName="comment" rows="4"></textarea>
+    <div *ngIf="monitoringForm.get('comment')?.invalid && (monitoringForm.get('comment')?.dirty || monitoringForm.get('comment')?.touched)"
+         class="text-danger">
+      <div *ngIf="monitoringForm.get('comment').errors?.required">Comment is required.</div>
+      <div *ngIf="monitoringForm.get('comment').errors?.minlength">Comment must be at least 3 characters long.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="grade">Grade:</label>
+    <input id="grade" type="number" class="form-control" formControlName="grade">
+    <div *ngIf="monitoringForm.get('grade')?.invalid && (monitoringForm.get('grade')?.dirty || monitoringForm.get('grade')?.touched)"
+         class="text-danger">
+      <div *ngIf="monitoringForm.get('grade').errors?.required">Grade is required.</div>
+      <div *ngIf="monitoringForm.get('grade').errors?.min">Grade must be at least 0.</div>
+      <div *ngIf="monitoringForm.get('grade').errors?.max">Grade cannot be greater than 100.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="status">Status:</label>
+    <select id="status" class="form-control" formControlName="status">
+      <option value="">--Please choose an option--</option>
+      <option *ngFor="let statusOption of statusOptions" [value]="statusOption">{{ statusOption }}</option>
+    </select>
+    <div *ngIf="monitoringForm.get('status')?.invalid && (monitoringForm.get('status')?.dirty || monitoringForm.get('status')?.touched)"
+         class="text-danger">
+      <div *ngIf="monitoringForm.get('status').errors?.required">Status is required.</div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="monitoringForm.invalid">Submit</button>
+</form>

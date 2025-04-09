@@ -1,0 +1,73 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Response</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    <div class="table-responsive">
+      <mat-form-field class="w-100">
+        <input
+          matInput
+          (keyup)="applyFilter()"
+          [(ngModel)]="filterShearch"
+          placeholder="Filter"
+        />
+      </mat-form-field>
+
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        class="mat-elevation-z8 table-responsive"
+      >
+        <!-- Name Column -->
+        <ng-container matColumnDef="message">
+          <th mat-header-cell *matHeaderCellDef>Message</th>
+          <td mat-cell *matCellDef="let element">{{ element.message }}</td>
+        </ng-container>
+        <ng-container matColumnDef="responseDate">
+          <th mat-header-cell *matHeaderCellDef>Response Date</th>
+          <td mat-cell *matCellDef="let element">{{ element.responseDate }}</td>
+        </ng-container>
+        <ng-container matColumnDef="note">
+          <th mat-header-cell *matHeaderCellDef>Rating</th>
+          <td mat-cell *matCellDef="let element">
+            <ng-container
+              *ngIf="element.status === 'IN_PROGRESS'; else hideContent"
+            >
+              <button mat-button (click)="showDropdown = true">
+                Select Rating
+              </button>
+            </ng-container>
+            <ng-template #hideContent>
+              <mat-form-field appearance="fill">
+                <mat-label>Select Rating</mat-label>
+                <mat-select
+                  [(value)]="element.note"
+                  (selectionChange)="showDropdown = false"
+                >
+                  <mat-option value="VERY_SATISFIED">Very Satisfied</mat-option>
+                  <mat-option value="SATISFIED">Satisfied</mat-option>
+                  <mat-option value="NEUTRAL">Neutral</mat-option>
+                  <mat-option value="NOT_SATISFIED">Not Satisfied</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </ng-template>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="noteAction">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-stroked-button color="accent" (click)="giveNote(element.idRep, element.note)">
+              Save
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>

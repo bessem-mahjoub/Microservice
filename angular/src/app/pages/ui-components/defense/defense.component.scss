@@ -1,0 +1,61 @@
+.custom-select-blue {
+  background-color: rgb(81, 78, 78); // Dark background
+  color: white; // White text color
+  border: 1px solid rgba(255, 255, 255, 0.5); // Light border for visibility
+  border-radius: 4px; // Slightly rounded corners
+  padding: 10px; // Padding for better spacing
+  appearance: none; // Remove default browser styling
+
+  // Hover and focus states
+  &:hover,
+  &:focus {
+    border-color: rgba(255, 255, 255, 1); // Brighten border on hover/focus
+    outline: none; // Remove default outline
+  }
+}
+
+.table-responsive {
+  overflow-x: auto; // Enable horizontal scrolling on smaller screens
+}
+
+.table {
+  width: 100%; // Full width table
+  border-collapse: collapse; // Collapse borders for a cleaner look
+
+  th,
+  td {
+    padding: 12px; // Padding for table cells
+    text-align: left; // Align text left
+    border-bottom: 1px solid #ddd; // Bottom border for rows
+
+    &:first-child,
+    &:last-child {
+      border: none; // Remove specific border for first and last cells
+    }
+  }
+
+  th {
+    background-color: rgb(238, 238, 238); // Light background for header
+    color: black; // Dark text for header
+  }
+}
+
+.actions-column {
+  display: flex; // Use flexbox for action buttons
+  gap: 10px; // Space between buttons
+}
+
+// Button styles
+button.mat-button,
+button.mat-icon-button {
+  transition: background-color 0.3s, color 0.3s; // Smooth transition for changes
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1); // Lighten background on hover
+    color: rgb(218, 215, 215); // Change text color on hover
+  }
+}
+
+#map {
+  height: 400px; // Fixed height for map
+}

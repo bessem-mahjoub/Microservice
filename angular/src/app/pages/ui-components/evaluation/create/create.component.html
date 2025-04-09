@@ -1,0 +1,59 @@
+<div class="table-responsive">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <td colspan="7">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="description"> DefenseId</label>
+                  <select class="form-control" id="idDefense" [(ngModel)]="selectedDefenseId" name="idDefense" required>
+                    <option value="">Sélectionnez une option</option>
+                    <option *ngFor="let defenseItem of defenseList" [value]="defenseItem.idDef">{{ defenseItem.idDef }}</option>
+                </select>
+                
+                
+              </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="description"> Description</label>
+                    <input type="text" class="form-control" id="description" [(ngModel)]="description" name="description" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <!--<div class="col-md-6">
+                  <div class="form-group">
+                    <label for="student">Student ID</label>
+                    <input type="text" class="form-control" id="student" [(ngModel)]="studentIdLabel" name="student" readonly>
+                  </div>
+                </div>
+              -->
+                
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="tutor">NomDeJuret</label>
+                    <input type="text" class="form-control" id="NomDeJuret" [(ngModel)]="tutor" name="NomDeJuret" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="note">note</label>
+                    <input type="number" class="form-control" id="note" [(ngModel)]="note" name="note" >
+                  </div>
+                </div>
+             
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-primary btn-block" (click)="addEvaluation()">Add Task</button>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

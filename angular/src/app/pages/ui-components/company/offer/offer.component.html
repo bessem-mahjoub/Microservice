@@ -1,0 +1,33 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header style="display: flex; justify-content: center;">
+    <mat-card-title class="m-b-0">Offers</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search..." (keyup)="filterOffers()">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Internship type</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let offer of filteredOffers">
+            <td>{{ offer.typeInternship }}</td>
+            <td>{{ offer.dateStart | date:"MMM dd, yyyy 'at' hh:mm a" }}</td>
+            <td>{{ offer.dateEnd | date:"MMM dd, yyyy 'at' hh:mm a" }}</td>
+            <td>
+              <button class="btn btn-danger" (click)="deleteOffer(offer.id)">Delete</button>
+              <button class="btn btn-primary" (click)="openUpdateDialog(offer.id)">Update Offer</button>
+              <button class="btn btn-primary">View Requests</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button class="btn btn-primary" (click)="show_add()">Add Offer</button>
+  </mat-card-content>
+</mat-card>

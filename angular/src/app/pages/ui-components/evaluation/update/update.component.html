@@ -1,0 +1,66 @@
+<p>update works!</p>
+<div class="table-responsive">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <td colspan="7">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="id">id</label>
+                    <input type="number" class="form-control" id="id" [(ngModel)]="data.id" name="id" required disabled>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="idDefense"> idDefense</label>
+
+                  <select class="form-control" id="idDefense" [(ngModel)]="selectedDefenseId" name="idDefense" required disabled>
+                    <option value="">Sélectionnez une option</option>
+                    <option *ngFor="let defenseItem of defenseList" [value]="defenseItem.idDef">{{ defenseItem.idDef }}</option>
+                </select>
+                
+                
+              </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="description"> Description</label>
+                    <input type="text" class="form-control" id="description" [(ngModel)]="data.description" name="description" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+               <!-- <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="student">Progress</label>
+                    <input type="text" class="form-control" id="student" [(ngModel)]="data.student" name="student" required>
+                  </div>
+                </div>
+                -->
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="tutor">tutor</label>
+                    <input type="text" class="form-control" id="duratutortion" [(ngModel)]="data.tutor" name="tutor" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="note">note</label>
+                    <input type="number" class="form-control" id="note" [(ngModel)]="data.note" name="note" >
+                  </div>
+                </div>
+             
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-primary btn-block" (click)="updateEvaluation(data)">UPDATE Evaluation</button>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

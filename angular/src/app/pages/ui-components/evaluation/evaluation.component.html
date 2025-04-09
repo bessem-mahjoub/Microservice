@@ -1,0 +1,109 @@
+
+
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+      <mat-card-title class="m-b-0">Evaluation Managemet</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+    </mat-card-content>
+  
+    <mat-card-content class="b-t-1">    
+
+        <button class="btn btn-primary btn-block"  (click)="openCreateDialogEval()">Create</button>
+    <br>
+    <br>
+    
+   <!-- <mat-card class="cardWithShadow theme-card">
+      <div class="form-outline mt-3">
+        <mat-card-title class="m-b-">Defense Historique Search :  </mat-card-title>
+        <br>
+        <input type="text" [(ngModel)]="query" class="form-control" placeholder="Enter your search query" (keyup.enter)="search()">
+      </div>
+     
+    
+      <ul *ngIf="historiqueDefenseArray && historiqueDefenseArray.length">
+        <li *ngFor="let historique of historiqueDefenseArray">
+          {{ historique.idDef }} - {{ historique.dateDefense | date }} - {{ historique.UserStudent?.address }} {{ historique.UserStudent?.id }}
+        </li>
+      </ul>  
+    </mat-card>
+    
+-->
+<mat-card class="cardWithShadow theme-card">
+  <div class="form-outline mt-3">
+    <mat-card-title>Defense Historique Search :</mat-card-title>
+    <br>
+    <input type="text" [(ngModel)]="query" class="form-control" placeholder="Enter your search query" (keyup.enter)="search()">
+  </div>
+
+  <!-- Tableau pour afficher les résultats de la recherche -->
+  <table *ngIf="historiqueDefenseArray && historiqueDefenseArray.length" mat-table [dataSource]="historiqueDefenseArray" class="mat-elevation-z8">
+
+    <!-- Colonne ID de défense -->
+    <ng-container matColumnDef="idDef">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.idDef }}</td>
+    </ng-container>
+
+    <!-- Colonne Date de défense -->
+    <ng-container matColumnDef="dateDefense">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let element">{{ element.dateDefense | date }}</td>
+    </ng-container>
+
+    <!-- Colonne Adresse de l'étudiant -->
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef>Adresse</th>
+      <td mat-cell *matCellDef="let element">{{ element.UserStudent?.address }}</td>
+    </ng-container>
+
+    <!-- Colonne ID de l'étudiant -->
+    <ng-container matColumnDef="studentId">
+      <th mat-header-cell *matHeaderCellDef>ID Étudiant</th>
+      <td mat-cell *matCellDef="let element">{{ element.UserStudent?.id }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>
+
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <!-- <th>IDDefense</th>-->
+                <th>NomDeJuret</th>
+               <!-- <th>Student</th>
+                --><th>Note</th>
+                <th>description</th>
+    
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr *ngFor="let evaluation of Evaluations">
+                <td>{{ evaluation.id }}</td>
+              <!--   <td>{{ getHistoriqueDefenseId(evaluation) }}</td>-->
+                
+                                <td>{{ evaluation.tutor }}</td>
+                <td>{{ evaluation.note }}</td>
+                <td>{{ evaluation.description }}</td>
+                <td><button class="btn btn-danger" (click)="deleteEvaluation(evaluation.id)">Delete</button></td>
+                <td><button class="btn btn-primary" (click)="openUpdateDialogEval(evaluation.id)">update</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </mat-card-content>
+
+      <apx-chart
+      class="flex-auto w-full h-80"
+      [series]="chartOptions.series!"
+      [chart]="chartOptions.chart!"
+      [responsive]="chartOptions.responsive!">
+  </apx-chart>
+    </mat-card>
+    
+  

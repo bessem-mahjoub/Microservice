@@ -1,0 +1,20 @@
+<button mat-icon-button [matMenuTriggerFor]="notificationMenu" aria-label="Notifications">
+  <mat-icon>notifications</mat-icon>
+  <span matBadge="{{ notificationcount }}" matBadgeColor="primary"></span>
+</button>
+
+<mat-menu #notificationMenu="matMenu">
+  <div class="notification-heading">
+    <h4 class="menu-title">Notifications</h4>
+  </div>
+  <mat-divider></mat-divider>
+  <ng-container *ngFor="let notification of notifications">
+     <button mat-menu-item *ngIf="notification.receiver.id == currentUserId" (click)="redirectToTask()">
+      <div class="discription" style="display: flex;"> <p style="color: rgb(255, 154, 154);">{{ notification.description }}</p>
+      </div>
+      <div class="sendername">
+       By <p style="color: rgb(255, 154, 154);">{{ notification.sender.name }}</p>
+    </div>
+    </button>
+  </ng-container>
+</mat-menu>

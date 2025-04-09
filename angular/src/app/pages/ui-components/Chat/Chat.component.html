@@ -1,0 +1,27 @@
+<div class="chatname">Coaching chat</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+      <div class="chat-container">
+        <div class="chat-messages" id="chat-messages">
+          <div *ngFor="let data of chats" [ngClass]="(data.sender.id === currentUserId) ? 'message sent':'message received'">
+            <div class="message-content">
+              <div class="sender">
+                <p class="sender-name">{{ data.sender?.name }}</p>
+              </div>
+              <div class="message-text-container">
+                <p class="message-text">{{ data.text }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chat-input" [formGroup]="chatForm">
+          <textarea class="form-control" formControlName="message" id="message-input" placeholder="Type your message..."></textarea>
+          <button class="btn btn-primary" (click)="add()">
+            <i class="material-icons">send</i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
